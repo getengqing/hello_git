@@ -34,3 +34,6 @@ script:
 branches:
   only:
     - master
+env:
+ global:
+- GH_REF: https://github.com/getengqing/hello_git.git
