@@ -19,7 +19,7 @@ git:
   submodules: false
 install:
     - npm install
-    #- npm install -g codecov istanbul
-test:
-    - npm run test
+    - npm install -g codecov istanbul
+#test:
+#    - npm run test
 
