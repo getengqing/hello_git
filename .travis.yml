@@ -12,28 +12,14 @@
 #branches:
 #  only:
 #    - master
-
 language: node_js
-node_js: stable
-
-# Travis-CI Caching
-cache:
-  directories:
-    - node_modules
-
-
-# S: Build Lifecycle
+node_js:
+    - "6"
+git:
+  submodules: false
 install:
-  - npm install
+    - npm install
+    - npm install -g codecov istanbul
+test:
+    - npm run test
 
-before_script:
-  - npm install -g gulp
-
-script:
-  - gulp dist
-branches:
-  only:
-    - master
-env:
- global:
-- GH_REF: https://github.com/getengqing/hello_git.git
