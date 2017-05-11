@@ -12,12 +12,22 @@
 #branches:
 #  only:
 #    - master
-language: node_js
-node_js:
-    - "6"
-git:
-  submodules: false
-install:
-    - npm install
-test:
-    - npm run test
+
+#language: node_js
+#node_js:
+#    - "6"
+#git:
+#  submodules: false
+#install:
+#    - npm install
+#test:
+#    - npm run test
+
+language: groovy
+
+jdk:
+    - oraclejdk8
+    - openjdk7
+
+script:
+    ./gradlew build
