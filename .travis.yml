@@ -13,34 +13,24 @@
 #  only:
 #    - master
 
-#language: node_js
-#node_js:
-#    - "6"
-#git:
-#  submodules: false
-#install:
-#    - npm install
-#test:
-#    - npm run test
+language: node_js
+node_js: stable
 
-language: android
+# Travis-CI Caching
+cache:
+  directories:
+    - node_modules
 
-jdk: oraclejdk8
 
-android:
-  components:
-    - tools
-    - android-24
-    - build-tools-24.0.2
-    - platform-tools
+# S: Build Lifecycle
+install:
+  - npm install
 
-script: ./gradlew build
+before_script:
+  - npm install -g gulp
 
-after_success:
-  - for name in $(find $TRAVIS_BUILD_DIR -name '*.apk'); do ls -hl $name;  done
-  - date
-
-after_failure:
-  for name in $(find $TRAVIS_BUILD_DIR -name lint-results*.xml); do echo $name; cat -n $name; done
-
-# vim: set shiftwidth=2 tabstop=2 softtabstop=-1 expandtab:
+script:
+  - gulp dist
+branches:
+  only:
+    - master
