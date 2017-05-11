@@ -14,12 +14,12 @@
 #    - master
 language: node_js
 node_js:
-    - "6"
+    - "4"
 git:
   submodules: false
 install:
     - npm install
-    - npm install -g codecov istanbul
+    #- npm install -g codecov istanbul
 test:
     - npm run test
 
